@@ -19,7 +19,6 @@ class TestViewController: UIViewController {
     var dataSource: DataSource!
     
     
-    
     lazy var collection: UICollectionView = {
         let cv = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         return cv
@@ -28,30 +27,68 @@ class TestViewController: UIViewController {
     fileprivate lazy var topView: UIView =  {
         
         let baseView = UIView()
-        let stackView = UIStackView()
-        for number in 1...8 {
-            
-            let label = UILabel()
-            
-            label.text = "\(number)"
-            stackView.addArrangedSubview(label)
-            
+        
+        
+        
+        let label1 = UILabel()
+        
+        
+        let label2 = UILabel()
+        
+        let label3 = UILabel()
+        
+        
+        let label4 = UILabel()
+        
+        
+        let label5 = UILabel()
+       
+        
+        let label6 = UILabel()
+        
+        
+        let label7 = UILabel()
+        
+        
+        let label8 = UILabel()
+        
+        
+        
+        for (index, element) in [label1, label2, label3, label4, label5, label6, label7,label8].enumerated() {
+            element.text = "\(index + 1)"
+            element.textAlignment = .center
+            baseView.addSubview(element)
+            element.translatesAutoresizingMaskIntoConstraints = false
             
         }
         
-        stackView.distribution = .fillEqually
-        stackView.axis = .horizontal
         
-        baseView.addSubview(stackView)
+        label1.topAnchor.constraint(equalTo: baseView.topAnchor).isActive = true
+        label1.leadingAnchor.constraint(equalTo: baseView.leadingAnchor, constant: 20).isActive = true
         
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+        label2.leadingAnchor.constraint(equalTo: label1.trailingAnchor, constant: 20).isActive = true
+        label2.widthAnchor.constraint(equalTo: label1.widthAnchor, multiplier: 1.0).isActive = true
         
-        stackView.leadingAnchor.constraint(equalTo: baseView.leadingAnchor, constant: 30).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: baseView.trailingAnchor).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: baseView.bottomAnchor).isActive = true
-        stackView.topAnchor.constraint(equalTo: baseView.topAnchor).isActive = true
+        label3.leadingAnchor.constraint(equalTo: label2.trailingAnchor, constant: 20).isActive = true
+        label3.widthAnchor.constraint(equalTo: label1.widthAnchor, multiplier: 1.0).isActive = true
+            
+        label4.leadingAnchor.constraint(equalTo: label3.trailingAnchor, constant: 20).isActive = true
+        label4.widthAnchor.constraint(equalTo: label1.widthAnchor, multiplier: 1.0).isActive = true
         
-         baseView.translatesAutoresizingMaskIntoConstraints = false
+        label5.leadingAnchor.constraint(equalTo: label4.trailingAnchor, constant: 20).isActive = true
+        label5.widthAnchor.constraint(equalTo: label1.widthAnchor, multiplier: 1.0).isActive = true
+        
+        label6.leadingAnchor.constraint(equalTo: label5.trailingAnchor, constant: 20).isActive = true
+        label6.widthAnchor.constraint(equalTo: label1.widthAnchor, multiplier: 1.0).isActive = true
+        
+        label7.leadingAnchor.constraint(equalTo: label6.trailingAnchor, constant: 20).isActive = true
+        label7.widthAnchor.constraint(equalTo: label1.widthAnchor, multiplier: 1.0).isActive = true
+        
+        label8.leadingAnchor.constraint(equalTo: label7.trailingAnchor, constant: 20).isActive = true
+        label8.widthAnchor.constraint(equalTo: label1.widthAnchor, multiplier: 1.0).isActive = true
+        
+        
+        baseView.translatesAutoresizingMaskIntoConstraints = false
         
         return baseView
         
@@ -71,7 +108,7 @@ class TestViewController: UIViewController {
             
         }
         
-         baseView.translatesAutoresizingMaskIntoConstraints = false
+        baseView.translatesAutoresizingMaskIntoConstraints = false
         
         stackView.distribution = .fillEqually
         stackView.axis = .horizontal
@@ -235,7 +272,7 @@ class TestViewController: UIViewController {
             //topView.widthAnchor.constraint(equalToConstant: view.frame.width),
             
             rightView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-           // rightView.topAnchor.constraint(equalTo: topView.bottomAnchor),
+            // rightView.topAnchor.constraint(equalTo: topView.bottomAnchor),
             //rightView.bottomAnchor.constraint(equalTo: bottomView.topAnchor),
             //rightView.widthAnchor.constraint(equalToConstant: 200),
             //rightView.heightAnchor.constraint(equalToConstant: view.frame.height - 100),
@@ -244,14 +281,14 @@ class TestViewController: UIViewController {
             //bottomView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             //bottomView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             //bottomView.heightAnchor.constraint(equalToConstant: 200),
-           // bottomView.widthAnchor.constraint(equalToConstant: view.frame.width),
+            // bottomView.widthAnchor.constraint(equalToConstant: view.frame.width),
             bottomView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-        
+            
             
             leftView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             //leftView.topAnchor.constraint(equalTo: topView.bottomAnchor),
             //leftView.heightAnchor.constraint(equalToConstant: view.frame.height - 100)
-                //leftView.bottomAnchor.constraint(equalTo: bottomView.topAnchor, constant: 20)
+            //leftView.bottomAnchor.constraint(equalTo: bottomView.topAnchor, constant: 20)
             
         ])
         
@@ -259,17 +296,17 @@ class TestViewController: UIViewController {
         
         
         collection.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-
+        
         //view.addSubview(collection)
-
+        
         collection.backgroundColor = .systemBackground
-
+        
         collection.translatesAutoresizingMaskIntoConstraints = false
-
+        
         collection.register(MyCell.self, forCellWithReuseIdentifier: "reuseMe")
-
+        
         collection.contentInsetAdjustmentBehavior = .never
-
+        
         
         view.addSubview(scrollView)
         
@@ -294,10 +331,10 @@ class TestViewController: UIViewController {
             dummyView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             dummyView.heightAnchor.constraint(equalTo: scrollView.heightAnchor),
             
-           collection.topAnchor.constraint(equalTo: dummyView.safeAreaLayoutGuide.topAnchor),
-           collection.leadingAnchor.constraint(equalTo: dummyView.safeAreaLayoutGuide.leadingAnchor),
-           collection.trailingAnchor.constraint(equalTo: dummyView.safeAreaLayoutGuide.trailingAnchor),
-           collection.bottomAnchor.constraint(equalTo: dummyView.safeAreaLayoutGuide.bottomAnchor)
+            collection.topAnchor.constraint(equalTo: dummyView.safeAreaLayoutGuide.topAnchor),
+            collection.leadingAnchor.constraint(equalTo: dummyView.safeAreaLayoutGuide.leadingAnchor),
+            collection.trailingAnchor.constraint(equalTo: dummyView.safeAreaLayoutGuide.trailingAnchor),
+            collection.bottomAnchor.constraint(equalTo: dummyView.safeAreaLayoutGuide.bottomAnchor)
             
         ])
         
@@ -348,39 +385,39 @@ class TestViewController: UIViewController {
 
 class DataSource: UICollectionViewDiffableDataSource<Section, Int> {
     
-//    override func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
-//        return true
-//    }
+    //    override func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+    //        return true
+    //    }
     
-//    override func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-//        guard let source = itemIdentifier(for: sourceIndexPath) else {return}
-//
-//        guard sourceIndexPath != destinationIndexPath else { return }
-//
-//        let destinationIdentifier = itemIdentifier(for: destinationIndexPath)
-//
-//        var snapshot = self.snapshot()
-//
-//        if let destinationIdentifier = destinationIdentifier {
-//            if let sourceIndex = snapshot.indexOfItem(source),
-//                let destinationIndex = snapshot.indexOfItem(destinationIdentifier) {
-//                let isAfter = destinationIndex > sourceIndex &&
-//                    snapshot.sectionIdentifier(containingItem: source) ==
-//                    snapshot.sectionIdentifier(containingItem: destinationIdentifier)
-//                snapshot.deleteItems([source])
-//                if isAfter {
-//                    snapshot.insertItems([source], afterItem: destinationIdentifier)
-//                } else {
-//                    snapshot.insertItems([source], beforeItem: destinationIdentifier)
-//                }
-//            }
-//        } else {
-//            let destinationSectionIdentifier = snapshot.sectionIdentifiers[destinationIndexPath.section]
-//            snapshot.deleteItems([source])
-//            snapshot.appendItems([source], toSection: destinationSectionIdentifier)
-//        }
-//        apply(snapshot, animatingDifferences: false)
-//    }
+    //    override func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+    //        guard let source = itemIdentifier(for: sourceIndexPath) else {return}
+    //
+    //        guard sourceIndexPath != destinationIndexPath else { return }
+    //
+    //        let destinationIdentifier = itemIdentifier(for: destinationIndexPath)
+    //
+    //        var snapshot = self.snapshot()
+    //
+    //        if let destinationIdentifier = destinationIdentifier {
+    //            if let sourceIndex = snapshot.indexOfItem(source),
+    //                let destinationIndex = snapshot.indexOfItem(destinationIdentifier) {
+    //                let isAfter = destinationIndex > sourceIndex &&
+    //                    snapshot.sectionIdentifier(containingItem: source) ==
+    //                    snapshot.sectionIdentifier(containingItem: destinationIdentifier)
+    //                snapshot.deleteItems([source])
+    //                if isAfter {
+    //                    snapshot.insertItems([source], afterItem: destinationIdentifier)
+    //                } else {
+    //                    snapshot.insertItems([source], beforeItem: destinationIdentifier)
+    //                }
+    //            }
+    //        } else {
+    //            let destinationSectionIdentifier = snapshot.sectionIdentifiers[destinationIndexPath.section]
+    //            snapshot.deleteItems([source])
+    //            snapshot.appendItems([source], toSection: destinationSectionIdentifier)
+    //        }
+    //        apply(snapshot, animatingDifferences: false)
+    //    }
     
 }
 
@@ -423,7 +460,7 @@ extension TestViewController: UIScrollViewDelegate {
         //topView.center.y = scrollView.center.y
         
         
-        print(scrollView.contentOffset.x)
+        print(scrollView.center.x)
         
     }
 }
